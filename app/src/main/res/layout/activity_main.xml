@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.samsia.roleplay.viewmodel.TodoViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:background="@color/colorPrimaryDark">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:setItems="@{viewModel.items}"
+            tools:notifyChange="@{viewModel.notifyChange, default=0}"
+            tools:notifyItemChange="@{viewModel.notifyItemChange, default=0}"
+            tools:notifyItemInserted="@{viewModel.notifyItemInserted, default=0}"
+            tools:notifyItemRangeInserted="@{viewModel.notifyItemRangeInserted, default=0}"
+            tools:notifyItemRangeChanged="@{viewModel.notifyItemRangeChanged}"
+            tools:scrollPosition="@{viewModel.scrollPosition}"/>
+
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mtf_labelColor="#666"
+            app:mtf_image="@drawable/icon_keyboard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#333"
+                android:textSize="15sp"
+                android:hint="@string/input_label"
+                addActionIcon="@{viewModel.editText.endIcon}"
+                android:inputType="text"
+                textChanged="@{viewModel.editText}"
+                />
+
+        </com.github.florent37.materialtextfield.MaterialTextField>
+
+        <com.samsia.roleplay.view.fabmenu.linear.AdvancedFabMenu
+            android:id="@+id/radial_menu_mini"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:menu_colorNormal="@android:color/holo_blue_dark"
+            app:menu_colorPressed="@android:color/holo_orange_dark"
+            app:menu_colorRipple="@android:color/holo_red_light"
+            app:menu_do_reveal="true"
+            app:menu_fab_size="mini"
+            app:menu_progress_backgroundColor="@android:color/holo_green_dark"
+            app:menu_progress_color="@android:color/holo_purple"
+            app:menu_progress_showBackground="true"
+            app:menu_progress_width="4dp"
+            app:menu_radial_angleOffset="-20"
+            app:menu_showShadow="false"
+            app:menu_type="radial">
+
+
+            <com.samsia.roleplay.view.fabmenu.fab.FloatingActionButton
+                android:id="@+id/fab_radial_mini1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="4dp"
+                android:src="@drawable/ic_video_selector"
+                app:fab_colorNormal="@android:color/holo_purple"
+                app:fab_showShadow="false"
+                app:fab_size="tiny" />
+
+            <com.samsia.roleplay.view.fabmenu.fab.FloatingActionButton
+                android:id="@+id/fab_radial_mini2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="4dp"
+                android:src="@drawable/ic_edit_selector"
+                app:fab_colorNormal="@android:color/holo_green_dark"
+                app:fab_showShadow="false"
+                app:fab_size="tiny" />
+
+            <com.samsia.roleplay.view.fabmenu.fab.FloatingActionButton
+                android:id="@+id/fab_radial_mini3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="4dp"
+                android:src="@drawable/ic_bookmark_sateful"
+                app:fab_colorNormal="@android:color/holo_blue_dark"
+                app:fab_showShadow="false"
+                app:fab_size="tiny" />
+        </com.samsia.roleplay.view.fabmenu.linear.AdvancedFabMenu>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

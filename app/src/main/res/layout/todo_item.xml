@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View" />
+        <import type="android.text.TextUtils" />
+        <variable
+            name="viewModel"
+            type="com.samsia.roleplay.viewmodel.TodoViewModel" />
+        <variable
+            name="data"
+            type="com.samsia.roleplay.data.Todo" />
+
+        <variable
+            name="position"
+            type="Integer" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="10dp"
+            android:text="@{data.name}"
+            android:fontFamily="@font/muli"
+            android:gravity="center_vertical|start"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+        <ImageView
+            android:id="@+id/remove_item"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:layout_alignParentEnd="true"
+            android:padding="12dp"
+            app:srcCompat="@drawable/ic_delete"
+            android:onClick="@{v -> viewModel.delete(data)}"/>
+    </RelativeLayout>
+</layout>
